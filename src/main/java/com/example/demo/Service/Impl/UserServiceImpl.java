@@ -49,7 +49,7 @@ public class UserServiceImpl implements UserService {
         } catch (dtException e) {
             e.printStackTrace();
         }
-
+-
         // Печатаем список сотрудников
         System.out.println("--------------------------------------------------------------------------------------------");
         System.out.println("| Employee name                                                                            |");
