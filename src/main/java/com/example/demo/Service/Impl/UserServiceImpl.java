@@ -60,7 +60,7 @@ public class UserServiceImpl implements UserService {
 
                     // Полное имя сотрудника
                     Object employeeName = null;
-                    employeeName = employeeVO.getProp(ThClass.FLD_NAME);
+                    employeeName = employeeVO.getProp(ThClass.FLD_ALIAS);
                     System.out.println("| " + employeeName + " | " + ((Number) employeeVO.getPrimaryKey()).intValue());
                     System.out.println(employeeName);
                     if (employeeName != null) {
