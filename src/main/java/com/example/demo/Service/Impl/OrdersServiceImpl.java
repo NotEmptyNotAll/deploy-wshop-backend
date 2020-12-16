@@ -149,7 +149,7 @@ public class OrdersServiceImpl implements OrdersService {
             for (Iterator<dtVO> it = customers.iterator(); it.hasNext(); ) {
                 dtVO customer = it.next();
                 if (sizeResp <= customerRequest.getSizeResponse()) {
-                    Object customerAlias = customer.getProp(ThClass.FLD_NAME);
+                    Object customerAlias = customer.getProp(ThClass.FLD_ALIAS);
                     if (customerAlias.toString().toLowerCase(Locale.ROOT).contains(customerRequest.getName().toLowerCase(Locale.ROOT))) {
                         Object customerId = null;
                         customerId = customer.getProp(ThClass.FLD_ID);
