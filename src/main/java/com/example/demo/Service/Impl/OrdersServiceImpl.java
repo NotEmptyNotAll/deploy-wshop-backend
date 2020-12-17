@@ -214,6 +214,7 @@ public class OrdersServiceImpl implements OrdersService {
         if (!userService.login(clientOrdersRequest.getUser())) {
             return null;
         }
+        System.out.println("---------------Size in rqst: "+clientOrdersRequest.getSizeResponse());
         Locale locale = new Locale(clientOrdersRequest.getLang());
         Locale.setDefault(locale);
         JComponent.setDefaultLocale(locale);

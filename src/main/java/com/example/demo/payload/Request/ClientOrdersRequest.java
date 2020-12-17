@@ -31,13 +31,14 @@ public class ClientOrdersRequest {
     }
 
 
-    public ClientOrdersRequest(String dateFrom, String dateTo, Boolean payed, String searchString, String state, Boolean isCloseDate, Integer customerId, Integer employeeId, Boolean status, User user, String lang, List<CellData> cellData) {
+    public ClientOrdersRequest(String dateFrom, String dateTo, Boolean payed, String searchString, String state, Boolean closeDate, Integer sizeResponse, Integer customerId, Integer employeeId, Boolean status, User user, String lang, List<CellData> cellData) {
         this.dateFrom = dateFrom;
         this.dateTo = dateTo;
         this.payed = payed;
         this.searchString = searchString;
         this.state = state;
-        this.closeDate = isCloseDate;
+        this.closeDate = closeDate;
+        this.sizeResponse = sizeResponse;
         this.customerId = customerId;
         this.employeeId = employeeId;
         this.status = status;
@@ -51,23 +52,12 @@ public class ClientOrdersRequest {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ClientOrdersRequest that = (ClientOrdersRequest) o;
-        return Objects.equals(dateFrom, that.dateFrom) &&
-                Objects.equals(dateTo, that.dateTo) &&
-                Objects.equals(payed, that.payed) &&
-                Objects.equals(searchString, that.searchString) &&
-                Objects.equals(state, that.state) &&
-                Objects.equals(closeDate, that.closeDate) &&
-                Objects.equals(customerId, that.customerId) &&
-                Objects.equals(employeeId, that.employeeId) &&
-                Objects.equals(status, that.status) &&
-                Objects.equals(user, that.user) &&
-                Objects.equals(lang, that.lang) &&
-                Objects.equals(cellData, that.cellData);
+        return Objects.equals(dateFrom, that.dateFrom) && Objects.equals(dateTo, that.dateTo) && Objects.equals(payed, that.payed) && Objects.equals(searchString, that.searchString) && Objects.equals(state, that.state) && Objects.equals(closeDate, that.closeDate) && Objects.equals(sizeResponse, that.sizeResponse) && Objects.equals(customerId, that.customerId) && Objects.equals(employeeId, that.employeeId) && Objects.equals(status, that.status) && Objects.equals(user, that.user) && Objects.equals(lang, that.lang) && Objects.equals(cellData, that.cellData);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(dateFrom, dateTo, payed, searchString, state, closeDate, customerId, employeeId, status, user, lang, cellData);
+        return Objects.hash(dateFrom, dateTo, payed, searchString, state, closeDate, sizeResponse, customerId, employeeId, status, user, lang, cellData);
     }
 
     public Integer getSizeResponse() {
