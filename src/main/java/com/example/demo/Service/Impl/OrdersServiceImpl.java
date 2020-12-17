@@ -72,6 +72,11 @@ public class OrdersServiceImpl implements OrdersService {
         if (!userService.login(clientOrdersRequest.getUser())) {
             return null;
         }
+
+        long t1,t2;
+        t1 = System.currentTimeMillis();
+        System.out.println("--------------time: "+t1);
+
         Locale locale = new Locale("ru");
         Locale.setDefault(locale);
         JComponent.setDefaultLocale(locale);
@@ -120,6 +125,8 @@ public class OrdersServiceImpl implements OrdersService {
 //                            ordersTableResponse.getColumnTables(),
 //                            clientOrdersRequest));
 //        }
+        t2 = System.currentTimeMillis();
+        System.out.println("--------------time: "+(t2-t1));
         return ordersTableResponse;
     }
 
@@ -434,9 +441,7 @@ public class OrdersServiceImpl implements OrdersService {
 
             cellDataList = new ArrayList<>();
             for (int columnNo = 0; columnNo < columnCount; columnNo++) {
-
                 System.out.print("|");
-
                 // Информация о колонке (см. javax.swing.table.TableColumn)
                 thVOArrayColumnInfo column = (thVOArrayColumnInfo) tableColumnModel.getColumn(columnNo);
                 // Ширина колонки
@@ -447,7 +452,6 @@ public class OrdersServiceImpl implements OrdersService {
                 if (cellValue == null) {
                     cellValue = "";
                 }
-
                 try {
                     if (isValidBySunString) {
                         cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
@@ -462,8 +466,6 @@ public class OrdersServiceImpl implements OrdersService {
                     e.printStackTrace();
                     cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
                 }
-
-
                 System.out.print(cellValue.toString());
             }
 
