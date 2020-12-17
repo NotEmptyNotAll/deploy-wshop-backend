@@ -72,6 +72,8 @@ public class OrdersServiceImpl implements OrdersService {
         if (!userService.login(clientOrdersRequest.getUser())) {
             return null;
         }
+        System.out.println("---------------Size in rqst: "+clientOrdersRequest.getSizeResponse());
+
 
         long t1, t2;
         t1 = System.currentTimeMillis();
@@ -126,6 +128,7 @@ public class OrdersServiceImpl implements OrdersService {
 //                            clientOrdersRequest));
 //        }
         t2 = System.currentTimeMillis();
+        System.out.println("---------------Size in response: "+ordersTableResponse.getSizeTwoPartData());
         System.out.println("--------------time: " + (t2 - t1));
         return ordersTableResponse;
     }
