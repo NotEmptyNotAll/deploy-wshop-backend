@@ -13,8 +13,8 @@ public class ClientOrdersRequest {
     private Boolean payed;
     private String searchString;
     private String state;
-    private Boolean closeDate ;
-
+    private Boolean closeDate;
+    private Integer sizeResponse;
     private Integer customerId;
 
     private Integer employeeId;
@@ -70,6 +70,13 @@ public class ClientOrdersRequest {
         return Objects.hash(dateFrom, dateTo, payed, searchString, state, closeDate, customerId, employeeId, status, user, lang, cellData);
     }
 
+    public Integer getSizeResponse() {
+        return sizeResponse;
+    }
+
+    public void setSizeResponse(Integer sizeResponse) {
+        this.sizeResponse = sizeResponse;
+    }
 
     public Boolean getCloseDate() {
         return closeDate;

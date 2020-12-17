@@ -73,9 +73,9 @@ public class OrdersServiceImpl implements OrdersService {
             return null;
         }
 
-        long t1,t2;
+        long t1, t2;
         t1 = System.currentTimeMillis();
-        System.out.println("--------------time: "+t1);
+        System.out.println("--------------time: " + t1);
 
         Locale locale = new Locale("ru");
         Locale.setDefault(locale);
@@ -126,7 +126,7 @@ public class OrdersServiceImpl implements OrdersService {
 //                            clientOrdersRequest));
 //        }
         t2 = System.currentTimeMillis();
-        System.out.println("--------------time: "+(t2-t1));
+        System.out.println("--------------time: " + (t2 - t1));
         return ordersTableResponse;
     }
 
@@ -403,7 +403,6 @@ public class OrdersServiceImpl implements OrdersService {
         dtVOArray worders = tableModel.getVOArray();
         // Получаем информацию о колонках
         TableColumnModel tableColumnModel = tableModel.getTableColumnModel();
-
         // Получаем количество колонок
         int columnCount = tableModel.getColumnCount();
         System.out.println("//////////");
@@ -432,7 +431,9 @@ public class OrdersServiceImpl implements OrdersService {
         List<CellData> cellDataList = null;
         int rowCount = tableModel.getRowCount();
 
-        for (int rowNo = 0; rowNo < rowCount; rowNo++) {
+        ordersTableResponse.setSizeTwoPartData(rowCount - clientOrdersRequest.getSizeResponse());
+        int n = rowCount >= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
+        for (int rowNo = 0; rowNo < n; rowNo++) {
             boolean isValidBySunString = true;
             if (clientOrdersRequest.getSearchString() != null) {
                 System.out.println(clientOrdersRequest.getSearchString());
@@ -553,7 +554,7 @@ public class OrdersServiceImpl implements OrdersService {
         // ФИЛЬТР ПО СОСТОЯНИЮ ОПЛАТЫ (ОПЛАЧЕН/НЕОПЛАЧЕН)
         //
         if (clientOrdersRequest.getPayed() != null) {
-            boolean temp=clientOrdersRequest.getPayed();
+            boolean temp = clientOrdersRequest.getPayed();
             thLocateOptionsSet payedFilter = thWOrdersPayedField.getFilter(temp);
             combinedFilter.add(payedFilter);
         }

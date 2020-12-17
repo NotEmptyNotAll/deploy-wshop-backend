@@ -9,6 +9,7 @@ import java.util.List;
 public class OrdersTableResponse {
     private List<OrdersTableColumn> ordersTableColumns;
     private List<OrdersTableRow> ordersTableBody;
+    private Integer sizeTwoPartData;
 
     public OrdersTableResponse() {
     }
@@ -36,6 +37,22 @@ public class OrdersTableResponse {
     }
 
 
+    public List<OrdersTableColumn> getOrdersTableColumns() {
+        return ordersTableColumns;
+    }
+
+    public void setOrdersTableColumns(List<OrdersTableColumn> ordersTableColumns) {
+        this.ordersTableColumns = ordersTableColumns;
+    }
+
+
+    public Integer getSizeTwoPartData() {
+        return sizeTwoPartData;
+    }
+
+    public void setSizeTwoPartData(Integer sizeTwoPartData) {
+        this.sizeTwoPartData = sizeTwoPartData;
+    }
 
     @Override
     public String toString() {
