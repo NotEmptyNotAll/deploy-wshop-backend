@@ -262,6 +262,7 @@ public class OrdersServiceImpl implements OrdersService {
 //                            ordersTableResponse.getColumnTables(),
 //                            clientOrdersRequest));
 //        }
+        System.out.println("---------------Size response: "+ordersTableResponse.getSizeTwoPartData());
         return ordersTableResponse;
     }
 
