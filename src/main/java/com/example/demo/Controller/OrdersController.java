@@ -38,7 +38,7 @@ public class OrdersController {
         } catch (dtException e) {
             e.printStackTrace();
         }
-        return new OrdersTableResponse();
+        return new OrdersTableResponse(-1);
     }
 
 
@@ -54,7 +54,7 @@ public class OrdersController {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return new OrdersTableResponse();
+        return new OrdersTableResponse(-1);
     }
 
 
@@ -70,7 +70,7 @@ public class OrdersController {
         } catch (dtException e) {
             e.printStackTrace();
         }
-        return new OrdersTableResponse();
+        return new OrdersTableResponse(-1);
     }
 
 

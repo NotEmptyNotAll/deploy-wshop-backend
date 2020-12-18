@@ -10,8 +10,13 @@ public class OrdersTableResponse {
     private List<OrdersTableColumn> ordersTableColumns;
     private List<OrdersTableRow> ordersTableBody;
     private Integer sizeTwoPartData;
+    private Integer status;
 
     public OrdersTableResponse() {
+    }
+
+    public OrdersTableResponse(Integer status) {
+        this.status = status;
     }
 
     public OrdersTableResponse(List<OrdersTableColumn> ordersTableColumns, List<OrdersTableRow> ordersTableBody) {
@@ -52,6 +57,14 @@ public class OrdersTableResponse {
 
     public void setSizeTwoPartData(Integer sizeTwoPartData) {
         this.sizeTwoPartData = sizeTwoPartData;
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     @Override

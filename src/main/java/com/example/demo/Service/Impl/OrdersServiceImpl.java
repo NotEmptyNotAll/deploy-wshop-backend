@@ -70,7 +70,7 @@ public class OrdersServiceImpl implements OrdersService {
 //        }
 
         if (!userService.login(clientOrdersRequest.getUser())) {
-            return null;
+            return new OrdersTableResponse(-1);
         }
         System.out.println("---------------Size in rqst: "+clientOrdersRequest.getSizeResponse());
 
@@ -215,7 +215,8 @@ public class OrdersServiceImpl implements OrdersService {
 //        }
 
         if (!userService.login(clientOrdersRequest.getUser())) {
-            return null;
+            return new OrdersTableResponse(-1);
+
         }
         System.out.println("---------------Size in rqst: "+clientOrdersRequest.getSizeResponse());
         Locale locale = new Locale(clientOrdersRequest.getLang());
