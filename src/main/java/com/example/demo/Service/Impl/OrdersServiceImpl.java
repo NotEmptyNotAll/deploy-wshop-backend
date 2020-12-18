@@ -316,7 +316,7 @@ public class OrdersServiceImpl implements OrdersService {
         List<CellData> cellDataList = null;
         int rowCount = tableModel.getRowCount();
         ordersTableResponse.setSizeTwoPartData(rowCount - clientOrdersRequest.getSizeResponse());
-        int n = rowCount >= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
+        int n = rowCount <= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
         System.out.println("---------------Size response: "+n);
         for (int rowNo = 0; rowNo < n; rowNo++) {
             boolean isValidBySunString = true;
