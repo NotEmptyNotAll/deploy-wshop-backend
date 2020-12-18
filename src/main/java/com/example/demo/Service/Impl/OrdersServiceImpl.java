@@ -319,7 +319,7 @@ public class OrdersServiceImpl implements OrdersService {
         ordersTableResponse.setSizeTwoPartData(rowCount - clientOrdersRequest.getSizeResponse());
         int n = rowCount <= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
         System.out.println("---------------Size response: "+n);
-        for (int rowNo = 0; rowNo < n; rowNo++) {
+        for (int rowNo = clientOrdersRequest.getRowStartIndex(); rowNo < n; rowNo++) {
             boolean isValidBySunString = true;
             if (clientOrdersRequest.getSearchString() != null) {
                 System.out.println(clientOrdersRequest.getSearchString());

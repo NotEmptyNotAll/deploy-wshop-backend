@@ -16,7 +16,7 @@ public class ClientOrdersRequest {
     private Boolean closeDate;
     private Integer sizeResponse;
     private Integer customerId;
-
+    private Integer rowStartIndex;
     private Integer employeeId;
 
     private Boolean status;
@@ -58,6 +58,14 @@ public class ClientOrdersRequest {
     @Override
     public int hashCode() {
         return Objects.hash(dateFrom, dateTo, payed, searchString, state, closeDate, sizeResponse, customerId, employeeId, status, user, lang, cellData);
+    }
+
+    public Integer getRowStartIndex() {
+        return rowStartIndex;
+    }
+
+    public void setRowStartIndex(Integer rowStartIndex) {
+        this.rowStartIndex = rowStartIndex;
     }
 
     public Integer getSizeResponse() {
