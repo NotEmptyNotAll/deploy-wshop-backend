@@ -315,8 +315,10 @@ public class OrdersServiceImpl implements OrdersService {
         // Печатаем срдержимое таблицы
         List<CellData> cellDataList = null;
         int rowCount = tableModel.getRowCount();
-
-        for (int rowNo = 0; rowNo < rowCount; rowNo++) {
+        ordersTableResponse.setSizeTwoPartData(rowCount - clientOrdersRequest.getSizeResponse());
+        int n = rowCount >= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
+        System.out.println("---------------Size response: "+n);
+        for (int rowNo = 0; rowNo < n; rowNo++) {
             boolean isValidBySunString = true;
             if (clientOrdersRequest.getSearchString() != null) {
                 System.out.println(clientOrdersRequest.getSearchString());
