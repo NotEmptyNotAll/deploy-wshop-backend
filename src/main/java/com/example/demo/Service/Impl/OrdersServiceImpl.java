@@ -373,7 +373,7 @@ public class OrdersServiceImpl implements OrdersService {
             }
 
             tt2 = System.currentTimeMillis();
-            sum+= (tt3 - tt2);
+            sum+= ( tt2-tt3 );
             System.out.println("----------------------------------------Row time: " + (tt2-tt3  ) + " main time: " + sum);
 
 
