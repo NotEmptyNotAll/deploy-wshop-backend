@@ -393,9 +393,9 @@ public class OrdersServiceImpl implements OrdersService {
                     System.out.println("| Comment: " + (comment == null ? "" : comment));
                     tempCom = (comment == null ? "" : comment.toString());
 
-                cellDataList.add(new CellData("Comment", tempCom));
-
-                tableBody.add(new OrdersTableRow(cellDataList, tempCom));
+//                cellDataList.add(new CellData("Comment", tempCom));
+//
+//                tableBody.add(new OrdersTableRow(cellDataList, tempCom));
             }
             System.out.println("--------------------------------------------Rofl: "+(System.currentTimeMillis()-rofl));
             System.out.println("|");
