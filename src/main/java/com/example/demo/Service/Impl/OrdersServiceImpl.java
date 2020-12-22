@@ -373,8 +373,7 @@ public class OrdersServiceImpl implements OrdersService {
             }
 
             tt2 = System.currentTimeMillis();
-            sum+= ( tt2-tt3 );
-            System.out.println("----------------------------------------Row time: " + (tt2-tt3  ) + " main time: " + sum);
+            System.out.println("---------------------------------------- 2 step Row time: " + (tt2-tt3 ) );
 
 
             if (isValidBySunString) {
@@ -397,6 +396,9 @@ public class OrdersServiceImpl implements OrdersService {
                 tableBody.add(new OrdersTableRow(cellDataList, tempCom));
             }
             System.out.println("|");
+            tt2 = System.currentTimeMillis();
+            sum+= ( tt2-tt3 );
+            System.out.println("----------------------------------------Row time: " + (tt2-tt3  ) + " main time: " + sum);
         }
 
         ordersTableResponse.setOrdersTableBody(tableBody);
