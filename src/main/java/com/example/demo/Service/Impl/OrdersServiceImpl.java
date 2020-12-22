@@ -336,7 +336,7 @@ public class OrdersServiceImpl implements OrdersService {
            long tt3 = System.currentTimeMillis();
 
             for (int columnNo = 0; columnNo < columnCount; columnNo++) {
-
+                tt2 = System.currentTimeMillis();
                 System.out.print("|");
 
                 // Информация о колонке (см. javax.swing.table.TableColumn)
@@ -349,8 +349,8 @@ public class OrdersServiceImpl implements OrdersService {
                 if (cellValue == null) {
                     cellValue = "";
                 }
-
-                try {
+                System.out.println("---------------------------------------- step Row time: " + (tt2 - System.currentTimeMillis()) + " main time: " + (sum+ System.currentTimeMillis()));
+//                try {
                     if (isValidBySunString) {
                         cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
                     } else if (cellValue.toString().toLowerCase()
@@ -360,17 +360,19 @@ public class OrdersServiceImpl implements OrdersService {
                     } else {
                         cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
                     }
-                } catch (NullPointerException e) {
-                    e.printStackTrace();
-                    cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
-                }
+//                } catch (NullPointerException e) {
+//                    e.printStackTrace();
+//                    cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
+//                }
 
 
                 System.out.print(cellValue.toString());
             }
+
+            tt2 = System.currentTimeMillis();
             sum+= (tt3 - tt2);
             System.out.println("----------------------------------------Row time: " + (tt3 - tt2) + " main time: " + sum);
-            tt2 = System.currentTimeMillis();
+
 
             if (isValidBySunString) {
                 String tempCom = "";
