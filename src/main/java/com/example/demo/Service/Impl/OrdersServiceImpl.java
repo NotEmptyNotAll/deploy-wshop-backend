@@ -106,7 +106,11 @@ public class OrdersServiceImpl implements OrdersService {
                                           thLocateOptionsSet pFilter,
                                           dtResultSet pResultSet, dtRequestTally pRequestTally) {
                 // Вызываем метод, который обработает полученные с сервера данные
-                printWordersTable(agent, pResultSet, pRequestTally, ordersTableResponse, clientOrdersRequest, clientOrdersRequest.getLang());
+                try {
+                    printWordersTable(agent, pResultSet, pRequestTally, ordersTableResponse, clientOrdersRequest, clientOrdersRequest.getLang());
+                } catch (dtException e) {
+                    e.printStackTrace();
+                }
             }
 
 
@@ -272,7 +276,7 @@ public class OrdersServiceImpl implements OrdersService {
     }
 
     private static void printWordersTable(thAgent agent, dtResultSet resultSet,
-                                          dtRequestTally requestTally, OrdersTableResponse ordersTableResponse, ClientOrdersRequest clientOrdersRequest, String lang) {
+                                          dtRequestTally requestTally, OrdersTableResponse ordersTableResponse, ClientOrdersRequest clientOrdersRequest, String lang) throws dtException {
         Locale locale = new Locale("ru");
         Locale.setDefault(locale);
         JComponent.setDefaultLocale(locale);
@@ -378,7 +382,6 @@ public class OrdersServiceImpl implements OrdersService {
                 long rofl=System.currentTimeMillis();
             if (isValidBySunString) {
                 String tempCom = "";
-                try {
 
                     // Получаем идентификатор заказа
                     Object id = worders.get(rowNo).getProp(ThClass.FLD_ID);
@@ -389,8 +392,7 @@ public class OrdersServiceImpl implements OrdersService {
                     // Печатаем комментарий
                     System.out.println("| Comment: " + (comment == null ? "" : comment));
                     tempCom = (comment == null ? "" : comment.toString());
-                } catch (dtException e) {
-                }
+
                 cellDataList.add(new CellData("Comment", tempCom));
 
                 tableBody.add(new OrdersTableRow(cellDataList, tempCom));
