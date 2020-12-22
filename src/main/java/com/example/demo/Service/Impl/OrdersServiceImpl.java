@@ -72,7 +72,7 @@ public class OrdersServiceImpl implements OrdersService {
         if (!userService.login(clientOrdersRequest.getUser())) {
             return new OrdersTableResponse(-1);
         }
-        System.out.println("---------------Size in rqst: "+clientOrdersRequest.getSizeResponse());
+        System.out.println("---------------Size in rqst: " + clientOrdersRequest.getSizeResponse());
 
 
         long t1, t2;
@@ -128,7 +128,7 @@ public class OrdersServiceImpl implements OrdersService {
 //                            clientOrdersRequest));
 //        }
         t2 = System.currentTimeMillis();
-        System.out.println("---------------Size in response: "+ordersTableResponse.getSizeTwoPartData());
+        System.out.println("---------------Size in response: " + ordersTableResponse.getSizeTwoPartData());
         System.out.println("--------------time: " + (t2 - t1));
         return ordersTableResponse;
     }
@@ -218,7 +218,7 @@ public class OrdersServiceImpl implements OrdersService {
             return new OrdersTableResponse(-1);
 
         }
-        System.out.println("---------------Size in rqst: "+clientOrdersRequest.getSizeResponse());
+        System.out.println("---------------Size in rqst: " + clientOrdersRequest.getSizeResponse());
         Locale locale = new Locale(clientOrdersRequest.getLang());
         Locale.setDefault(locale);
         JComponent.setDefaultLocale(locale);
@@ -267,7 +267,7 @@ public class OrdersServiceImpl implements OrdersService {
 //                            ordersTableResponse.getColumnTables(),
 //                            clientOrdersRequest));
 //        }
-        System.out.println("---------------Size response: "+ordersTableResponse.getSizeTwoPartData());
+        System.out.println("---------------Size response: " + ordersTableResponse.getSizeTwoPartData());
         return ordersTableResponse;
     }
 
@@ -292,7 +292,9 @@ public class OrdersServiceImpl implements OrdersService {
         dtVOArray worders = tableModel.getVOArray();
         // Получаем информацию о колонках
         TableColumnModel tableColumnModel = tableModel.getTableColumnModel();
-
+        long tt1 = System.currentTimeMillis();
+        long sum=0;
+        System.out.println("----------------------------------------Column time: " + tt1);
         // Получаем количество колонок
         int columnCount = tableModel.getColumnCount();
 
@@ -313,12 +315,16 @@ public class OrdersServiceImpl implements OrdersService {
         }
         System.out.println("|");
 
+        long tt2 = System.currentTimeMillis();
+        sum+= (tt2 - tt1);
+        System.out.println("----------------------------------------Column time: " + (tt2 - tt1) + " main time: " + sum);
         // Печатаем срдержимое таблицы
         List<CellData> cellDataList = null;
         int rowCount = tableModel.getRowCount();
         ordersTableResponse.setSizeTwoPartData(rowCount - clientOrdersRequest.getSizeResponse());
         int n = rowCount <= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
-        System.out.println("---------------Size response: "+n);
+        System.out.println("---------------Size response: " + n);
+        System.out.println("---------------start index: " + n);
         for (int rowNo = clientOrdersRequest.getRowStartIndex(); rowNo < n; rowNo++) {
             boolean isValidBySunString = true;
             if (clientOrdersRequest.getSearchString() != null) {
@@ -327,6 +333,8 @@ public class OrdersServiceImpl implements OrdersService {
             }
 
             cellDataList = new ArrayList<>();
+           long tt3 = System.currentTimeMillis();
+
             for (int columnNo = 0; columnNo < columnCount; columnNo++) {
 
                 System.out.print("|");
@@ -360,6 +368,9 @@ public class OrdersServiceImpl implements OrdersService {
 
                 System.out.print(cellValue.toString());
             }
+            sum+= (tt3 - tt2);
+            System.out.println("----------------------------------------Row time: " + (tt3 - tt2) + " main time: " + sum);
+            tt2 = System.currentTimeMillis();
 
             if (isValidBySunString) {
                 String tempCom = "";
@@ -441,7 +452,7 @@ public class OrdersServiceImpl implements OrdersService {
 
         ordersTableResponse.setSizeTwoPartData(rowCount - clientOrdersRequest.getSizeResponse());
         int n = rowCount >= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
-        System.out.println("---------------Size response: "+n);
+        System.out.println("---------------Size response: " + n);
         for (int rowNo = 0; rowNo < n; rowNo++) {
             boolean isValidBySunString = true;
             if (clientOrdersRequest.getSearchString() != null) {
