@@ -374,7 +374,7 @@ public class OrdersServiceImpl implements OrdersService {
 
             tt2 = System.currentTimeMillis();
             sum+= (tt3 - tt2);
-            System.out.println("----------------------------------------Row time: " + (tt3 - tt2) + " main time: " + sum);
+            System.out.println("----------------------------------------Row time: " + (tt2-tt3  ) + " main time: " + sum);
 
 
             if (isValidBySunString) {
