@@ -349,7 +349,8 @@ public class OrdersServiceImpl implements OrdersService {
                 if (cellValue == null) {
                     cellValue = "";
                 }
-                System.out.println("---------------------------------------- step Row time: " + (tt2 - System.currentTimeMillis()) + " main time: " + (sum+ tt2 - System.currentTimeMillis()));
+                System.out.println("---------------------------------------- 1 step Row time: " + (tt2 - System.currentTimeMillis()) );
+                tt2=System.currentTimeMillis();
 //                try {
                     if (isValidBySunString) {
                         cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
@@ -360,6 +361,8 @@ public class OrdersServiceImpl implements OrdersService {
                     } else {
                         cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
                     }
+                System.out.println("---------------------------------------- 2 step Row time: " + (tt2 - System.currentTimeMillis()) );
+
 //                } catch (NullPointerException e) {
 //                    e.printStackTrace();
 //                    cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
