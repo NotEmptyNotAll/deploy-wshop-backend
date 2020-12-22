@@ -349,7 +349,7 @@ public class OrdersServiceImpl implements OrdersService {
                 if (cellValue == null) {
                     cellValue = "";
                 }
-                System.out.println("---------------------------------------- step Row time: " + (tt2 - System.currentTimeMillis()) + " main time: " + (sum+ System.currentTimeMillis()));
+                System.out.println("---------------------------------------- step Row time: " + (tt2 - System.currentTimeMillis()) + " main time: " + (sum+ tt2 - System.currentTimeMillis()));
 //                try {
                     if (isValidBySunString) {
                         cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
