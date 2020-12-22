@@ -382,20 +382,20 @@ public class OrdersServiceImpl implements OrdersService {
                 long rofl=System.currentTimeMillis();
             if (isValidBySunString) {
                 String tempCom = "";
-
-                    // Получаем идентификатор заказа
-                    Object id = worders.get(rowNo).getProp(ThClass.FLD_ID);
-                    // Считываем заказ из базы данных
-                    agent.initByKey(id);
-                    // Получаем комментарий из считанной сущности
-                    Object comment = agent.getVOProperty(WorkOrderEntity.FLD_COMMENT);
-                    // Печатаем комментарий
-                    System.out.println("| Comment: " + (comment == null ? "" : comment));
-                    tempCom = (comment == null ? "" : comment.toString());
-
-//                cellDataList.add(new CellData("Comment", tempCom));
 //
-//                tableBody.add(new OrdersTableRow(cellDataList, tempCom));
+//                    // Получаем идентификатор заказа
+//                    Object id = worders.get(rowNo).getProp(ThClass.FLD_ID);
+//                    // Считываем заказ из базы данных
+//                    agent.initByKey(id);
+//                    // Получаем комментарий из считанной сущности
+//                    Object comment = agent.getVOProperty(WorkOrderEntity.FLD_COMMENT);
+//                    // Печатаем комментарий
+//                    System.out.println("| Comment: " + (comment == null ? "" : comment));
+//                    tempCom = (comment == null ? "" : comment.toString());
+
+                cellDataList.add(new CellData("Comment", tempCom));
+
+                tableBody.add(new OrdersTableRow(cellDataList, tempCom));
             }
             System.out.println("--------------------------------------------Rofl: "+(System.currentTimeMillis()-rofl));
             System.out.println("|");
