@@ -375,7 +375,7 @@ public class OrdersServiceImpl implements OrdersService {
             tt2 = System.currentTimeMillis();
             System.out.println("---------------------------------------- 2 step Row time: " + (tt2-tt3 ) );
 
-
+                long rofl=System.currentTimeMillis();
             if (isValidBySunString) {
                 String tempCom = "";
                 try {
@@ -395,6 +395,7 @@ public class OrdersServiceImpl implements OrdersService {
 
                 tableBody.add(new OrdersTableRow(cellDataList, tempCom));
             }
+            System.out.println("--------------------------------------------Rofl: "+(System.currentTimeMillis()-rofl));
             System.out.println("|");
             tt2 = System.currentTimeMillis();
             sum+= ( tt2-tt3 );
