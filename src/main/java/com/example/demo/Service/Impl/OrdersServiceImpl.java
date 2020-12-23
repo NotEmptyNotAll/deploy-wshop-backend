@@ -329,12 +329,12 @@ public class OrdersServiceImpl implements OrdersService {
         int n = rowCount <= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
         System.out.println("---------------Size response: " + n);
         System.out.println("---------------start index: " + n);
-        for (int rowNo = clientOrdersRequest.getRowStartIndex(); rowNo < n; rowNo++) {
-            boolean isValidBySunString = true;
-            if (clientOrdersRequest.getSearchString() != null) {
-                System.out.println(clientOrdersRequest.getSearchString());
-                isValidBySunString = false;
-            }
+        for (int rowNo = clientOrdersRequest.getRowStartIndex(); rowNo < rowCount; rowNo++) {
+//            boolean isValidBySunString = true;
+//            if (clientOrdersRequest.getSearchString() != null) {
+//                System.out.println(clientOrdersRequest.getSearchString());
+//                isValidBySunString = false;
+//            }
 
             cellDataList = new ArrayList<>();
            long tt3 = System.currentTimeMillis();
@@ -356,15 +356,17 @@ public class OrdersServiceImpl implements OrdersService {
                 System.out.println("---------------------------------------- 1 step Row time: " + (  System.currentTimeMillis()-tt2) );
                 tt2=System.currentTimeMillis();
 //                try {
-                    if (isValidBySunString) {
-                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
-                    } else if (cellValue.toString().toLowerCase()
-                            .contains(clientOrdersRequest.getSearchString().toLowerCase())) {
-                        isValidBySunString = true;
-                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
-                    } else {
-                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
-                    }
+                cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
+
+//                if (isValidBySunString) {
+//                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
+//                    } else if (cellValue.toString().toLowerCase()
+//                            .contains(clientOrdersRequest.getSearchString().toLowerCase())) {
+//                        isValidBySunString = true;
+//                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
+//                    } else {
+//                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
+//                    }
                 System.out.println("---------------------------------------- 2 step Row time: " + (System.currentTimeMillis() -tt2  ) );
 
 //                } catch (NullPointerException e) {
@@ -380,7 +382,7 @@ public class OrdersServiceImpl implements OrdersService {
             System.out.println("---------------------------------------- 3 step Row time: " + (tt2-tt3 ) );
 
                 long rofl=System.currentTimeMillis();
-            if (isValidBySunString) {
+//            if (isValidBySunString) {
                 String tempCom = "";
 //
 //                    // Получаем идентификатор заказа
@@ -396,7 +398,7 @@ public class OrdersServiceImpl implements OrdersService {
                 cellDataList.add(new CellData("Comment", tempCom));
 
                 tableBody.add(new OrdersTableRow(cellDataList, tempCom));
-            }
+//            }
             System.out.println("--------------------------------------------Rofl: "+(System.currentTimeMillis()-rofl));
             System.out.println("|");
             tt2 = System.currentTimeMillis();

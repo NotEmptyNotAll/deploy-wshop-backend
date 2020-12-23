@@ -32,9 +32,11 @@ public class OrdersController {
                     MediaType.APPLICATION_XML_VALUE})
     @ResponseBody
     public OrdersTableResponse getCroppedOrders(@RequestBody ClientOrdersRequest clientOrdersRequest) {
-
+        long time=System.currentTimeMillis();
         try {
-            return ordersService.getCroppedOrderList(clientOrdersRequest);
+            OrdersTableResponse ordersTableResponse=ordersService.getCroppedOrderList(clientOrdersRequest);
+            System.out.println("//////////////////////////////////////////////////////////////////////////////////////------------------Time: "+time);
+            return ordersTableResponse;
         } catch (dtException e) {
             e.printStackTrace();
         }
