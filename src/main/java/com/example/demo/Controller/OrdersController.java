@@ -35,7 +35,7 @@ public class OrdersController {
         long time=System.currentTimeMillis();
         try {
             OrdersTableResponse ordersTableResponse=ordersService.getCroppedOrderList(clientOrdersRequest);
-            System.out.println("//////////////////////////////////////////////////////////////////////////////////////------------------Time: "+time);
+            System.out.println("//////////////////////////////////////////////////////////////////////////////////////------------------Time: "+(System.currentTimeMillis()-time));
             return ordersTableResponse;
         } catch (dtException e) {
             e.printStackTrace();
