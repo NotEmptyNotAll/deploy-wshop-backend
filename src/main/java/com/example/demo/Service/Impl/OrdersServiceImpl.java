@@ -329,12 +329,12 @@ public class OrdersServiceImpl implements OrdersService {
         int n = rowCount <= clientOrdersRequest.getSizeResponse() ? rowCount : clientOrdersRequest.getSizeResponse();
         System.out.println("---------------Size response: " + n);
         System.out.println("---------------start index: " + n);
-        for (int rowNo = clientOrdersRequest.getRowStartIndex(); rowNo < rowCount; rowNo++) {
-//            boolean isValidBySunString = true;
-//            if (clientOrdersRequest.getSearchString() != null) {
-//                System.out.println(clientOrdersRequest.getSearchString());
-//                isValidBySunString = false;
-//            }
+        for (int rowNo = clientOrdersRequest.getRowStartIndex(); rowNo < n; rowNo++) {
+            boolean isValidBySunString = true;
+            if (clientOrdersRequest.getSearchString() != null) {
+                System.out.println(clientOrdersRequest.getSearchString());
+                isValidBySunString = false;
+            }
 
             cellDataList = new ArrayList<>();
            long tt3 = System.currentTimeMillis();
@@ -358,15 +358,15 @@ public class OrdersServiceImpl implements OrdersService {
 //                try {
                 cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
 
-//                if (isValidBySunString) {
-//                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
-//                    } else if (cellValue.toString().toLowerCase()
-//                            .contains(clientOrdersRequest.getSearchString().toLowerCase())) {
-//                        isValidBySunString = true;
-//                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
-//                    } else {
-//                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
-//                    }
+                if (isValidBySunString) {
+                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
+                    } else if (cellValue.toString().toLowerCase()
+                            .contains(clientOrdersRequest.getSearchString().toLowerCase())) {
+                        isValidBySunString = true;
+                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
+                    } else {
+                        cellDataList.add(new CellData(column.getHeaderValue().toString(), cellValue.toString()));
+                    }
                 System.out.println("---------------------------------------- 2 step Row time: " + (System.currentTimeMillis() -tt2  ) );
 
 //                } catch (NullPointerException e) {
