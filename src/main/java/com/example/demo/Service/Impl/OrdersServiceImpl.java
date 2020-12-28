@@ -382,7 +382,7 @@ public class OrdersServiceImpl implements OrdersService {
             System.out.println("---------------------------------------- 3 step Row time: " + (tt2-tt3 ) );
 
                 long rofl=System.currentTimeMillis();
-//            if (isValidBySunString) {
+            if (isValidBySunString) {
                 String tempCom = "";
 //
 //                    // Получаем идентификатор заказа
@@ -398,7 +398,7 @@ public class OrdersServiceImpl implements OrdersService {
                 cellDataList.add(new CellData("Comment", tempCom));
 
                 tableBody.add(new OrdersTableRow(cellDataList, tempCom));
-//            }
+            }
             System.out.println("--------------------------------------------Rofl: "+(System.currentTimeMillis()-rofl));
             System.out.println("|");
             tt2 = System.currentTimeMillis();
